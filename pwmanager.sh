@@ -17,23 +17,37 @@ pw=
 
 id=
 
-function help {
+help() {
+  echo '________  _  _______ _____    ____ _____     ____   ___________ '
+  echo '\____ \ \/ \/ /     \\__  \  /    \\__  \   / ___\_/ __ \_  __ \'
+  echo '|  |_> >     /  Y Y  \/ __ \|   |  \/ __ \_/ /_/  >  ___/|  | \/'
+  echo '|   __/ \/\_/|__|_|  (____  /___|  (____  /\___  / \___  >__|   '
+  echo '|__|               \/     \/     \/     \//_____/      \/       '
+}
+
+get_pw() {
+  local id=$1
+  local pw_db=$2
+  local pubkey=$3
+
+  local tmp_db=$(decrypt_pw_db $pw_db $pubkey)
+
+  local pw=$(awk -F"^$id," '{printf $2}' $tmp_db)
+
+  [ $pw ] && echo $pw
+
+  rm $tmp_db
+}
+
+decrypt_pw_db() {
   echo "Hello World"
 }
 
-function get_pw {
+save_pw() {
   echo "Hello World"
 }
 
-function decrypt_pw_db {
-  echo "Hello World"
-}
-
-function save_pw {
-  echo "Hello World"
-}
-
-function delete_pw {
+delete_pw() {
   echo "Hello World"
 }
 
