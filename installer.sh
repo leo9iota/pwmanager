@@ -19,3 +19,13 @@ if [ "$(dpkg-query -W -f='${Status}' xclip 2>/dev/null | grep -c "ok installed")
   echo 'xclip not installed .... installing now!'
   sudo apt install xclip -y
 fi
+
+if [ "$(dpkg-query -W -f='${Status}' gpg 2>/dev/null | grep -c "ok installed")" -eq 0 ]; then
+  echo 'gpg not installed .... installing now!'
+  sudo apt install gpg -y
+fi
+
+if [ "$(dpkg-query -W -f='${Status}' pwgen 2>/dev/null | grep -c "ok installed")" -eq 0 ]; then
+  echo 'pwgen not installed .... installing now!'
+  sudo apt install pwgen -y
+fi
